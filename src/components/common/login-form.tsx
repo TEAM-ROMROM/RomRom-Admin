@@ -2,15 +2,19 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import Image from "next/image";
 
 export default function LoginForm() {
   return (
       <Card className="w-full max-w-sm">
         <CardHeader>
-          <CardTitle>RomRom 관리자 로그인</CardTitle>
-          <CardDescription>
-            RomRom 관리자 로그인 화면입니다
-          </CardDescription>
+          <div className="flex flex-row justify-between">
+            <div className="flex flex-col gap-2">
+              <CardTitle>RomRom 관리자 로그인</CardTitle>
+              <CardDescription>RomRom 관리자 로그인 화면입니다</CardDescription>
+            </div>
+            <Image src="/icons/logo.svg" alt="logo" width="50" height="50" />
+          </div>
         </CardHeader>
         <CardContent>
           <form>
