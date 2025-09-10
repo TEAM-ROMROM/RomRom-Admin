@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "../ISSUE_TEMPLATE/issue-label.yml"
+      - ".github/workflows/sync-issue-labels.yaml"
 
 jobs:
   label-sync:
