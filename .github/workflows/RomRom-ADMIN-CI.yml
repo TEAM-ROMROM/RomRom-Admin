@@ -14,9 +14,9 @@ jobs:
         uses: actions/checkout@v4
 
       # .env.local 파일 생성
-      - name: Create .env.local file
+      - name: Create .env.prod file
         run: |
-          echo -e "${{ secrets.ENV }}" > .env.local
+          echo -e "${{ secrets.ENV_PROD }}" > .env.prod
 
       - name: Set up Node.js
         uses: actions/setup-node@v4

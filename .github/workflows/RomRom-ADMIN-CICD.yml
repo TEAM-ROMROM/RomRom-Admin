@@ -18,12 +18,12 @@ jobs:
         uses: actions/checkout@v4
 
       # 브랜치별 .env.local 생성
-      - name: Create .env.local file
+      - name: Create .env.prod file
         run: |
           if [ "${{ github.ref_name }}" == "main" ]; then
-            echo -e "${{ secrets.ENV_MAIN }}" > .env.local
+            echo -e "${{ secrets.ENV_PROD }}" > .env.prod
           elif [ "${{ github.ref_name }}" == "test" ]; then
-            echo -e "${{ secrets.ENV_TEST }}" > .env.local
+            echo -e "${{ secrets.ENV_PROD }}" > .env.prod
           fi
 
       - name: Set up Node.js
