@@ -3,8 +3,7 @@ import { LoginRequest, TokenPair } from "@/app/(without-layout)/login/_shared/se
 import { CustomError } from "@/lib/error/custom-error";
 import { ErrorCode } from "@/lib/error/error-code";
 import { isLocalhost } from "@/lib/utils";
-
-const API_BASE_URL = process.env.API_BASE_URL ?? '';
+import { API_BASE_URL } from "@/lib/api/types";
 
 export async function POST(req: NextRequest): Promise<Response> {
   const ctx = req.headers.get('content-type') || '';
