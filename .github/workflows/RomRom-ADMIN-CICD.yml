@@ -132,6 +132,7 @@ jobs:
 
             echo "새로운 컨테이너 $CONTAINER_NAME 실행 중..."
             echo $PW | sudo -S docker run -d -p ${PORT}:3000 --name $CONTAINER_NAME \
+              --env-file /path/to/.env.production \
               ${{ secrets.DOCKERHUB_USERNAME }}/${APP_BASE}:${BRANCH}
             
             # <none> 태그로 남은 이미지 정리
