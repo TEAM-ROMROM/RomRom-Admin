@@ -17,13 +17,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 브랜치별 .env.development 생성
-      - name: Create .env.development file
+      # 브랜치별 .env.production 생성
+      - name: Create .env.production file
         run: |
           if [ "${{ github.ref_name }}" == "main" ]; then
-            echo -e "${{ secrets.ENV_DEVELOPMENT }}" > .env.development
+            echo -e "${{ secrets.ENV_PRODUCTION }}" > .env.production
           elif [ "${{ github.ref_name }}" == "test" ]; then
-            echo -e "${{ secrets.ENV_DEVELOPMENT }}" > .env.development
+            echo -e "${{ secrets.ENV_PRODUCTION }}" > .env.production
           fi
 
       - name: Set up Node.js

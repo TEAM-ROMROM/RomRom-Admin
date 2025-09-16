@@ -14,10 +14,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # .env.development 파일 생성
-      - name: Create .env.development file
+      # .env.production 파일 생성
+      - name: Create .env.production file
         run: |
-          echo -e "${{ secrets.ENV_DEVELOPMENT }}" > .env.development
+          echo -e "${{ secrets.ENV_PRODUCTION }}" > .env.production
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
