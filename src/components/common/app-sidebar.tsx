@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Sidebar,
   SidebarContent,
@@ -10,9 +12,13 @@ import {
   SidebarMenuButton,
   SidebarMenuItem
 } from "@/components/ui/sidebar";
-import { Home, Inbox, Settings, User } from "lucide-react";
+import { Home, Inbox, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { logout } from "@/app/(with-layout)/_shared/services/logout-api";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 // Menu items.
 const items = [
@@ -30,15 +36,28 @@ const items = [
     title: "회원관리",
     url: "/member",
     icon: User,
-  },
-  {
-    title: "로그아웃",
-    url: "/logout",
-    icon: Settings
   }
 ]
 
 export default function AppSidebar() {
+  const router = useRouter();
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const onClickLogout = async () => {
+    if (loading) {
+      return;
+    }
+    setLoading(true);
+    try {
+      await logout();
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
+      router.replace('/login');
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
       <Sidebar>
         <SidebarHeader>
@@ -66,7 +85,19 @@ export default function AppSidebar() {
             </SidebarGroupContent>
           </SidebarGroup>
         </SidebarContent>
-        <SidebarFooter />
+        <SidebarFooter>
+          <SidebarMenuItem key="로그아웃">
+            <SidebarMenuButton asChild>
+              <Button
+                  className="hover:cursor-pointer"
+                  onClick={onClickLogout}
+                  disabled={loading}
+              >
+                {loading ? "로그아웃 중..." : "로그아웃"}
+              </Button>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarFooter>
       </Sidebar>
-  )
+  );
 };
