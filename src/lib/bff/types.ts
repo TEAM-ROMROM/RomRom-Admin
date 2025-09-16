@@ -2,9 +2,7 @@
 import { NextRequest } from "next/server";
 
 export interface ProxyContext {
-  readonly params: {
-    readonly path: string[];
-  };
+  readonly params: Promise<{ path: string[] }>
 }
 
 // 프록시 실행에 필요한 설정

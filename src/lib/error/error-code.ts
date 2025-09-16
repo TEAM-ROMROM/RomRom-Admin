@@ -10,7 +10,7 @@ export const ERROR_CODES = {
   INVALID_REQUEST: {status: 400, message: '유효하지 않은 요청입니다.'},
 
   // AUTH
-  LOGIN_FAILED: {status: 400, message: '로그인에 실패했습니다'},
+  LOGIN_FAILED: {status: 401, message: '로그인에 실패했습니다'},
 } as const;
 
 export type ErrorCodeKey = keyof typeof ERROR_CODES;
