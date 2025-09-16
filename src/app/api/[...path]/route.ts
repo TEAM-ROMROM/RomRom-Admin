@@ -2,10 +2,10 @@ import { NextRequest } from "next/server";
 import { createProxy } from "@/lib/bff/proxy";
 import { ProxyContext } from "@/lib/bff/types";
 
-const API_PATH: string = process.env.API_BASE_URL ?? "";
+const API_BASE_URL: string = process.env.API_BASE_URL ?? "";
 
 const proxy = createProxy({
-  backendBaseUrl: API_PATH,
+  backendBaseUrl: API_BASE_URL,
   promoteCookieToAuth: { cookieName: 'accessToken', overwriteIfExists: false },
   stripRequestHeaders: ['content-length'],
 });
