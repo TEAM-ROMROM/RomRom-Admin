@@ -1,4 +1,4 @@
-import { NextResponse, type NextRequest } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 import type { ProxyConfig, ProxyContext, ProxyHandler } from './types';
 
 /** URL 안전 결합 (중복 슬래시 제거) */
@@ -50,7 +50,8 @@ export function createProxy(config: ProxyConfig): ProxyHandler {
   const backendHost = backendUrl.host;
 
   return async (req: NextRequest, ctx: ProxyContext): Promise<Response> => {
-    const path = (ctx.params?.path ?? []).join('/');
+    const { path: segs } = await ctx.params;
+    const path = Array.isArray(segs) ? segs.join('/') : '';
     const target = joinUrl(config.backendBaseUrl, path, new URL(req.url).search);
 
     const upstreamHeaders = buildUpstreamHeaders(req, backendHost, config);

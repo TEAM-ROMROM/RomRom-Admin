@@ -10,26 +10,26 @@ const proxy = createProxy({
   stripRequestHeaders: ['content-length'],
 });
 
-export function GET(req: NextRequest, ctx: ProxyContext): Promise<Response> {
+export async function GET(req: NextRequest, ctx: ProxyContext): Promise<Response> {
   return proxy(req, ctx);
 }
 
-export function POST(req: NextRequest, ctx: ProxyContext): Promise<Response> {
+export async function POST(req: NextRequest, ctx: ProxyContext): Promise<Response> {
   return proxy(req, ctx);
 }
 
-export function PUT(req: NextRequest, ctx: ProxyContext): Promise<Response> {
+export async function PUT(req: NextRequest, ctx: ProxyContext): Promise<Response> {
   return proxy(req, ctx);
 }
 
-export function PATCH(req: NextRequest, ctx: ProxyContext): Promise<Response> {
+export async function PATCH(req: NextRequest, ctx: ProxyContext): Promise<Response> {
   return proxy(req, ctx);
 }
 
-export function DELETE(req: NextRequest, ctx: ProxyContext): Promise<Response> {
+export async function DELETE(req: NextRequest, ctx: ProxyContext): Promise<Response> {
   return proxy(req, ctx);
 }
 
-export function OPTIONS(req: NextRequest, ctx: ProxyContext): Promise<Response> {
+export async function OPTIONS(req: NextRequest, ctx: ProxyContext): Promise<Response> {
   return proxy(req, ctx);
 }
