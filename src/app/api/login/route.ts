@@ -42,6 +42,7 @@ export async function POST(req: NextRequest): Promise<Response> {
     if (data.accessToken) {
       res.cookies.set('accessToken', data.accessToken);
     }
+    return res;
   }
   return upstream;
 }
